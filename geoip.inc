@@ -160,6 +160,11 @@ static ResetState(playerid)
 hook OnPlayerConnect(playerid) {
 	new addr[16];
 	GetPlayerIp(playerid, addr);
+	
+	if (strequal(addr, "127.0.0.1")) {
+		return 1;
+	}
+
 	_geoip_doRequest(addr, playerid);
 	return 1;
 }
